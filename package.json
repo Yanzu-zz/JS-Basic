@@ -1,0 +1,38 @@
+{
+  "name": "js_basic",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^2.6.3",
+    "basic-auth": "^1.1.0",
+    "corser": "^2.0.1",
+    "colors": "^1.4.0",
+    "debug": "^3.2.7",
+    "ecstatic": "^3.3.2",
+    "eventemitter3": "^4.0.7",
+    "follow-redirects": "^1.13.0",
+    "lodash": "^4.17.20",
+    "he": "^1.2.0",
+    "ms": "^2.1.2",
+    "http-proxy": "^1.18.1",
+    "minimist": "^1.2.5",
+    "mime": "^1.6.0",
+    "mkdirp": "^0.5.5",
+    "portfinder": "^1.0.28",
+    "qs": "^6.9.4",
+    "requires-port": "^1.0.0",
+    "opener": "^1.5.2",
+    "secure-compare": "^3.0.1",
+    "union": "^0.5.0",
+    "url-join": "^2.0.5"
+  },
+  "scripts": {
+    "server": "http-server -p 8001"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
+}
