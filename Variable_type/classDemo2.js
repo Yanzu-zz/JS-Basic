@@ -45,6 +45,11 @@ console.log(xiaoming.number)
 xiaoming.sayHi()
 xiaoming.eat()
 
+// 但是，在 __proto__ 上执行 sayHi() 的时候，this 指向父级的 this
+// 此时父级没有赋值 name 和 number，所以输出 undefined
+xiaoming.__proto__.sayHi() // undefined
+xiaoming.__proto__.sayHi.call(xiaoming) // 正确
+
 module.exports = {
   People,
   Teacher,
