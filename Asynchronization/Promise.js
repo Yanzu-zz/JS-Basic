@@ -8,16 +8,17 @@
 
 // 手写 Promise 加载一张图片
 function loadImg(src) {
+  // pending
   return new Promise((resolve, reject) => {
     const img = document.createElement('img')
 
     img.onload = () => {
-      // 找个合适的实际把结果 resolve 出去
-      resolve(img)
+      // 找个合适的（结合自己的项目业务逻辑）实际把结果 resolve 出去
+      resolve(img) // resolved
     }
     img.onerror = () => {
       const err = new Error(`图片加载失败 ${src}`)
-      reject(err)
+      reject(err) // rejected
     }
 
     img.src = src
@@ -36,7 +37,7 @@ loadImg(imgUrl)
   .then((img) => {
     console.log(img.height)
     document.body.appendChild(img)
-    return img // 只要 return img，后面就能无限 .then() 下去
+    return img // 只要 return img: Promise，后面就能无限 .then() 下去
   })
   .then((img) => {
     console.log(img.width)
