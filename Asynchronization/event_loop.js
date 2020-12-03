@@ -16,6 +16,16 @@
  * （可能比较难）
  */
 
+/**
+ * event loop 运行机制
+ * 1. 把 JS 代码一行行压栈并运行
+ * 2. 遇到异步代码时把其加入 Web APIs
+ * 3. 当同步代码执行完时，开始执行当前微任务
+ * 4. 然后尝试渲染 DOM（如果其结构有变化的话）
+ * 4. 接着当 Web APIs 里面的方法有回调的时候，将其压入 Callback Queue
+ * 5. Event Loop 开始遍历并运行 Callback Queue 里的代码
+ */
+
 // 示例
 console.log('Hi')
 

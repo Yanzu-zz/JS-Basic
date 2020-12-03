@@ -174,3 +174,35 @@ Promise.resolve()
     console.log('3')
   })
 // 输出 1 2
+
+
+// 第四题
+async function async4() {
+  console.log('async4 start') // 2
+  await async5()
+  // await 后面的内容（这里只有一行）都作为回调内容 —— 微任务
+  console.log('async4 end') // 6
+}
+
+async function async5() {
+  console.log('async5') // 3
+}
+
+console.log('Question 4 embark') // 1
+
+// 宏任务
+setTimeout(function () {
+  console.log('setTimeout') // 8
+}, 0)
+
+async4()
+
+// 注意：初始化 Promise 时，传入的函数会立即执行
+new Promise(function (resolve) {
+  console.log('Promise1') // 4
+  resolve()
+}).then(() => { // 微任务
+  console.log('Promise2') // 7
+})
+
+console.log('Question 4 over') // 5

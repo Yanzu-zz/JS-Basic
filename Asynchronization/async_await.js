@@ -60,7 +60,7 @@ async function async1() {
   await async2() // undefined
   console.log('———————— async line ————————')
 
-  // 但是注意了，在 await 的后面的代码内容，都可以看做是 callback 里的内容，即是异步的回调哦
+  // 但是注意了，在 await 的后面的代码内容，都作为回调内容 —— 微任务
   // 类似 event loop，setTimeout(cb)
   // 但实际上更像是 Promise.resolve.then(()=>{console.log('async1 end')})
   console.log('async1 end') // 5，所以这里实际上是看做异步里的操作，所以最后打印
