@@ -17,6 +17,7 @@
  *    4 —— （完成）响应内容解析完成，可以在客户端调用
  * 
  * xhr.status（http 状态码）
+ *    1xx 服务器收到请求
  *    2xx 表示成功处理请求
  *    3xx 需要重定向，浏览器直接（临时or永久）跳转
  *    4xx 客户端请求错误
@@ -42,7 +43,7 @@ xhr.onreadystatechange = function () {
     }
   }
 }
-xhr.send(null)
+// xhr.send(null)
 
 
 // 因为 post 请求我们这个简单服务器无法实现，所以就单纯的代码演示
@@ -63,8 +64,7 @@ const postData = {
   password: '123456'
 }
 // 发送是需要发送 JSON 字符串的，平常别的工具帮你弄好了而已
-xhr.send(JSON.stringify(postData))
-
+// xhr.send(JSON.stringify(postData))
 
 /**
  * 跨域
@@ -112,3 +112,57 @@ xhr.send(JSON.stringify(postData))
     console.log(data)
   }
 }) */
+
+
+// 手写一个简易的 aJax
+function ajax(url) {
+  const p = new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', url, true)
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          resolve(JSON.parse(xhr.responseText))
+        } else if (xhr.status === 404) {
+          reject(new Error('404 not found'))
+        }
+      }
+    }
+    xhr.send(null)
+  })
+
+  return p
+}
+
+const url = './data/test.json'
+const url2 = './asdfsad.js'
+ajax(url)
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => {
+    console.error(err)
+  })
+
+// 404 情况
+ajax(url2)
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => {
+    console.error(err)
+  })
+
+
+
+/**
+ * fetch
+ * 更方便，但是没有 100% 兼容浏览器
+ */
+const pData = {
+  a: 10
+}
+fetch(url, pData)
+  .then(res => {
+    console.log(res)
+  })
