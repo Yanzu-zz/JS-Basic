@@ -4,6 +4,14 @@
  * 2. 同步会阻塞代码执行
  */
 
+window.addEventListener('load',function(){
+  console.log('window Loaded!')
+})
+
+document.addEventListener('DOMContentLoaded',function(){
+  console.log('DOM loaded!')
+})
+
 // 而 Promise 的出现就是为了解决 异步 调用中的回调地狱问题
 
 // 手写 Promise 加载一张图片
@@ -27,7 +35,7 @@ function loadImg(src) {
 }
 
 const imgUrl = 'https://news.sznews.com/pic/2020-11/19/5df905f6-230d-4cb4-a440-b603aadc5d13.png'
-const imgUrl2 = 'http://cdn.toutiao.lawnewcn.com/static/20200617/b8/9352217aebb7a7b3e38dafe59d9532b8'
+const imgUrl2 = 'https://images7.alphacoders.com/573/thumb-1920-573701.jpg'
 
 loadImg(imgUrl)
   .then((img) => {
