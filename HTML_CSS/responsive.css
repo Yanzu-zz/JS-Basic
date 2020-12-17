@@ -1,0 +1,27 @@
+/* 
+  CSS 响应式
+
+  rem 是什么？
+    rem 是一个长度单位
+      px  —— 绝对长度单位，最常用
+      em  —— 相对长度单位，相对于父元素，不常用
+      rem —— 相对长度单位，相对于根元素，常用于响应式布局
+
+
+  响应式布局的常见方案？
+    media-query，根据不同的屏幕宽度设置根元素 font-size
+    然后再根据 rem，即基于根元素的相对单位进行配置
+
+  vw / vh 的用法？
+    它们的出现是 rem 的弊端 —— “阶梯”性，即很难实现严格的响应式布局
+    网页视口尺寸
+      window.screen.height // 屏幕（点亮）的高度
+      window.innerHeight   // 网页视口高度，即把浏览器头部导航栏、底部 nav 砍掉，剩下的能显示内容的高度
+      document.body.clientHeight // body 高度
+    宽度同理，Height 换成 Width
+
+    vh 是网页视口高度的 1%
+    vw 是网页视口宽度的 1%
+    vmax 取两者的最大值
+    vmin 取两者的最小值
+ */
